@@ -1,0 +1,50 @@
+.navbar{
+  background-color: #12355b;
+
+}
+/* .form-inline{
+} */
+
+body{
+  background-color: #001514;
+
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+li{
+  display: list-item;
+  margin-right: 5px;
+  color: #8c271e;
+}
+
+.container{
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+.form-inline{
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row-reverse;
+  margin-top: 5px;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+
+
+h1 {
+  font-family: sans-serif,cursive;
+  color: #8c271e;
+  text-align: center;
+
+}
