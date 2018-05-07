@@ -6,16 +6,16 @@ function search(searchTerm){
       console.log("in searchTerm");
        //this is comicVineAPI used with cards.  Needs to be changed to movie api_key
        //with the correct fields
-       var comicVineAPI = "https://comicvine.gamespot.com/api/search/?json_callback=?";
-       console.log(comicVineAPI);
-       var items = [];
-       $.getJSON (comicVineAPI, {  //need to replace the query and fields with
+      let movieAPI = "https://api.themoviedb.org/3/discover/movie/?callback=?"
+       console.log(movieAPI);
+       let items = [];
+       $.getJSON (movieAPI, {  //need to replace the query and fields with
                                    //the ones from the movie api
-         api_key: "05b4f8f5fda83cc6c9ff081e00bd78f0143e16ba",
+         api_key: "1129d2385edb99c86d346163cc650604",
          query: searchTerm,
-         resources: "issue",
+         // resources: "movie",
          limit: "10",
-         field_list: "id,name,image,description, api_detail_url,issue_number",
+         results: "results,id,title,poster_path",
          format: "jsonp"
        })
          .done(function( data ) {  //when we are done, do stuff with the data returned
@@ -27,7 +27,7 @@ function search(searchTerm){
            console.log(data);
 
            //create the cardGroup at the top "data" level
-           var divCardGroup = document.createElement('div');
+           let divCardGroup = document.createElement('div');
             divCardGroup.className = "card-deck";
 
           //for each row in data.results, create a card programmatically and
@@ -40,36 +40,36 @@ function search(searchTerm){
           if (i < 6){    //we only want 6 boxes on the front page -
                          //if we do a random movie, will need to look
                          //at doing this a little different, but that can wait
-            var divCard = document.createElement('div');
+            let divCard = document.createElement('div');
             divCard.className = "card";
             divCard.style = "width: 18rem";
 
-            var divCardImage = document.createElement('img');
+            let divCardImage = document.createElement('img');
             divCardImage.className = "card-img-top";
-            divCardImage.setAttribute('src', data.results[i].image.small_url);
+            divCardImage.setAttribute('src', data.results[i].image);
             divCardImage.setAttribute('style', 'size:30%');
             divCard.appendChild(divCardImage);
 
             divCardBody = document.createElement('div');
             divCardBody.className =  "card-body";
 
-            var divH5 = document.createElement('h5');
+            let divH5 = document.createElement('h5');
             divH5.className="card-title";
 
-            var divH5Text = document.createTextNode(data.results[i].name);
+            let divH5Text = document.createTextNode(data.results[i].name);
             divH5.appendChild(divH5Text);
             divCardBody.appendChild(divH5);
 
-            var divP = document.createElement('p');
+            let divP = document.createElement('p');
             divP.className="card-text";
 
-            var divPText = document.createTextNode(data.results[i].description);
+            let divPText = document.createTextNode(data.results[i].description);
             divP.appendChild(divPText);
             divCardBody.appendChild(divP);
 
             divCard.appendChild(divCardBody);
 
-            var cardContainer = document.getElementById("cardContainer");
+            let cardContainer = document.getElementById("cardContainer");
             divCardGroup.appendChild(divCard);
             cardContainer.appendChild(divCardGroup);
           } //end-if
@@ -77,9 +77,9 @@ function search(searchTerm){
         })
       })
       .fail(function() { //need to add something in case the call fails}
-        var divFail = document.createElement('p');
+        let divFail = document.createElement('p');
 
-        var divFailText = document.createTextNode("API Not Responding.  Please Refresh.");
+        let divFailText = document.createTextNode("API Not Responding.  Please Refresh.");
         divFail.appendChild(divFailText);
         cardContainer.appendChild(divFail);
       });
