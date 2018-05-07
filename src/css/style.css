@@ -12,19 +12,17 @@ body{
 ul{
   display: flex;
   flex-direction: row;
-  padding-top: 10px;
+
 }
 
 li{
   display: list-item;
   margin-right: 5px;
-  color: #8c271e;
-}
 
-.container{
+}
+.container-fluid{
   padding-left: 0;
   padding-right: 0;
-  width: 100%;
 }
 .form-inline{
   display: flex;
@@ -40,7 +38,23 @@ li{
     margin-left: 5px;
 }
 
+.btn-outline-success {
+    color: white;
+    background-color: #8c271e;
+    background-image: none;
+    border-color: white;
+}
+/* .navbar-default .navbar-toggle .navbar-toggle-icon {
+    color: : white;
+} */
+.navbar-dark .navbar-toggler .nav-link{
+    color: #8c271e;
+    border-color: rgba(0,0,0,.1);
+}
 
+.navbar-toggler.navbar-toggler-icon{
+  color: yellow;
+}
 
 h1 {
   font-family: sans-serif,cursive;
