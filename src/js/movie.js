@@ -67,12 +67,12 @@ function search(searchTerm){
             divH5.appendChild(divH5Text);
             divCardBody.appendChild(divH5);
 
-            let divP = document.createElement('p');
-            divP.className="card-text";
+            // let divP = document.createElement('p');
+            // divP.className="card-text";
 
-            let divPText = document.createTextNode(data.results[i].overview);
-            divP.appendChild(divPText);
-            divCardBody.appendChild(divP);
+            // let divPText = document.createTextNode(data.results[i].overview);
+            // divP.appendChild(divPText);
+            // divCardBody.appendChild(divP);
 
             divCard.appendChild(divCardBody);
 
