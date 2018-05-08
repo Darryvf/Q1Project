@@ -40,7 +40,7 @@ function search(searchTerm){
             console.log (data.results[i]);
             console.log("title: " + data.results[i].title);
 
-          if (i < 6){    //we only want 6 boxes on the front page -
+          if (i < 8){    //we only want 6 boxes on the front page -
                          //if we do a random movie, will need to look
                          //at doing this a little different, but that can wait
             let divCard = document.createElement('div');
@@ -52,7 +52,7 @@ function search(searchTerm){
 
             let divCardImage = document.createElement('img');
             divCardImage.className = "card-img-top";
-            divCardImage.setAttribute('src', "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path);
+            divCardImage.setAttribute('src', "https://image.tmdb.org/t/p/w780" + data.results[i].poster_path);
             divCardImage.setAttribute('style', 'size:30%');
             divCardAnchor.appendChild(divCardImage);
             divCard.appendChild(divCardAnchor);

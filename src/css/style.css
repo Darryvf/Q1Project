@@ -56,9 +56,18 @@ li{
   color: yellow;
 }
 
+
 h1 {
   font-family: sans-serif,cursive;
   color: #8c271e;
   text-align: center;
 
+}
+
+.card .card-body{
+  background-color: #12355b;
+}
+
+.card .card-body .card-title{
+  color: white;
 }
