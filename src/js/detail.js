@@ -2,22 +2,25 @@ $(document).ready(function() {
 
 search("");  //this calls the function after the DOM is loaded automtically
 
+
 function search(searchTerm){
       console.log("in searchTerm");
        //this was comicVineAPI used with cards. Changed to movie api_key
        //with the correct fields
-      let movieAPI = "https://api.themoviedb.org/3/discover/movie/?callback=?"
-       console.log(movieAPI);
+      let detailClick = $(location).attr('search').split('=')[1];
+      let movieAPIBase = "https://api.themoviedb.org/3/movie/" + detailClick;
+       console.log(movieAPIBase);
        let items = [];
-       $.getJSON (movieAPI, {  //need to replace the query and fields with
+       $.getJSON (movieAPIBase, {  //need to replace the query and fields with
                                    //the ones from the movie api
          api_key: "1129d2385edb99c86d346163cc650604",
-         language: "en-us",
-         sort_by: "popularity.desc",
-         include_adult: "false",
-         include_video: "false",
-         page: "1",
-         with_genres: "878"
+         language: "en-us"
+         //comment out rest of params for the id
+         // sort_by: "popularity.desc",
+         // include_adult: "false",
+         // include_video: "false",
+         // page: "1",
+         // with_genres: "878"
        })
 
 
@@ -35,27 +38,23 @@ function search(searchTerm){
 
           //for each row in data.results, create a card programmatically and
           //add it to the card group
-          $.each( data.results, function(i) {
-            console.log("in .each");
-            console.log (data.results[i]);
-            console.log("title: " + data.results[i].title);
+          // $.each( data.results, function(i) {
+            // console.log("in .each");
+            console.log (data);
+            console.log("title: " + data.title);
 
-          if (i < 6){    //we only want 6 boxes on the front page -
+          // if (i < 6){    //we only want 6 boxes on the front page -
                          //if we do a random movie, will need to look
                          //at doing this a little different, but that can wait
             let divCard = document.createElement('div');
             divCard.className = "card";
             divCard.style = "width: 18rem";
 
-            let divCardAnchor = document.createElement('a');
-            divCardAnchor.setAttribute('href',"detail.html?movie_id=" + data.results[i].id);
-
             let divCardImage = document.createElement('img');
             divCardImage.className = "card-img-top";
-            divCardImage.setAttribute('src', "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path);
+            divCardImage.setAttribute('src', "https://image.tmdb.org/t/p/w500" + data.poster_path);
             divCardImage.setAttribute('style', 'size:30%');
-            divCardAnchor.appendChild(divCardImage);
-            divCard.appendChild(divCardAnchor);
+            divCard.appendChild(divCardImage);
 
             divCardBody = document.createElement('div');
             divCardBody.className =  "card-body";
@@ -63,25 +62,34 @@ function search(searchTerm){
             let divH5 = document.createElement('h5');
             divH5.className="card-title";
 
-            let divH5Text = document.createTextNode(data.results[i].title);
+            let divH5Text = document.createTextNode(data.title);
             divH5.appendChild(divH5Text);
             divCardBody.appendChild(divH5);
 
             let divP = document.createElement('p');
             divP.className="card-text";
 
-            let divPText = document.createTextNode(data.results[i].overview);
+            let divPText = document.createTextNode(data.overview);
             divP.appendChild(divPText);
             divCardBody.appendChild(divP);
+
+            // divCard.appendChild(divCardBody);
+
+            let divR = document.createElement('p');
+            divR.className="card-text";
+
+            let divRText = document.createTextNode(data.release_date);
+            divR.appendChild(divRText);
+            divCardBody.appendChild(divR);
 
             divCard.appendChild(divCardBody);
 
             let cardContainer = document.getElementById("cardContainer");
             divCardGroup.appendChild(divCard);
             cardContainer.appendChild(divCardGroup);
-          } //end-if
+          // } //end-if
 
-        })
+        // })
       })
       .fail(function() { //need to add something in case the call fails}
         let divFail = document.createElement('p');
