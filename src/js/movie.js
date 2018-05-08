@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-search("spider man");  //this calls the function after the DOM is loaded automtically
+search("");  //this calls the function after the DOM is loaded automtically
 
 function search(searchTerm){
       console.log("in searchTerm");
-       //this is comicVineAPI used with cards.  Needs to be changed to movie api_key
+       //this was comicVineAPI used with cards. Changed to movie api_key
        //with the correct fields
       let movieAPI = "https://api.themoviedb.org/3/discover/movie/?callback=?"
        console.log(movieAPI);
@@ -12,12 +12,15 @@ function search(searchTerm){
        $.getJSON (movieAPI, {  //need to replace the query and fields with
                                    //the ones from the movie api
          api_key: "1129d2385edb99c86d346163cc650604",
-         query: searchTerm,
-         // resources: "movie",
-         limit: "10",
-         results: "results,id,title,poster_path",
-         format: "jsonp"
+         language: "en-us",
+         sort_by: "popularity.desc",
+         include_adult: "false",
+         include_video: "false",
+         page: "1",
+         with_genres: "878"
        })
+
+
          .done(function( data ) {  //when we are done, do stuff with the data returned
            console.log("in .done");
            //need to look at the structure of the data returned so the fields
@@ -35,7 +38,7 @@ function search(searchTerm){
           $.each( data.results, function(i) {
             console.log("in .each");
             console.log (data.results[i]);
-            console.log("name: " + data.results[i].name);
+            console.log("title: " + data.results[i].title);
 
           if (i < 6){    //we only want 6 boxes on the front page -
                          //if we do a random movie, will need to look
@@ -46,7 +49,7 @@ function search(searchTerm){
 
             let divCardImage = document.createElement('img');
             divCardImage.className = "card-img-top";
-            divCardImage.setAttribute('src', data.results[i].image);
+            divCardImage.setAttribute('src', "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path);
             divCardImage.setAttribute('style', 'size:30%');
             divCard.appendChild(divCardImage);
 
@@ -56,14 +59,14 @@ function search(searchTerm){
             let divH5 = document.createElement('h5');
             divH5.className="card-title";
 
-            let divH5Text = document.createTextNode(data.results[i].name);
+            let divH5Text = document.createTextNode(data.results[i].title);
             divH5.appendChild(divH5Text);
             divCardBody.appendChild(divH5);
 
             let divP = document.createElement('p');
             divP.className="card-text";
 
-            let divPText = document.createTextNode(data.results[i].description);
+            let divPText = document.createTextNode(data.results[i].overview);
             divP.appendChild(divPText);
             divCardBody.appendChild(divP);
 
