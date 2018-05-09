@@ -1,23 +1,22 @@
 $(document).ready(function() {
 
-search("spider man");  //this calls the function after the DOM is loaded automtically
+search("wonder woman");  //this calls the function after the DOM is loaded automtically
 
 function search(searchTerm){
       console.log("in searchTerm");
        //this was comicVineAPI used with cards. Changed to movie api_key
        //with the correct fields
-      let movieAPI = "https://api.themoviedb.org/3/search/movie?api_key=1129d2385edb99c86d346163cc650604&language=en-US&query=spider%20man&page=1&include_adult=false"
+      let movieAPI = "https://api.themoviedb.org/3/search/movie?callback=?"
        console.log(movieAPI);
        let items = [];
        $.getJSON (movieAPI, {  //need to replace the query and fields with
                                    //the ones from the movie api
          api_key: "1129d2385edb99c86d346163cc650604",
          language: "en-us",
-         sort_by: "popularity.desc",
+         query: searchTerm,
          include_adult: "false",
-         include_video: "false",
          page: "1",
-         with_genres: "878"
+
        })
 
 

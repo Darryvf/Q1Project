@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-search("");  //this calls the function after the DOM is loaded automtically
+landingPage("");  //this calls the function after the DOM is loaded automtically
 
-function search(searchTerm){
-      console.log("in searchTerm");
+function landingPage(){
+      console.log("in landingPage");
        //this was comicVineAPI used with cards. Changed to movie api_key
        //with the correct fields
       let movieAPI = "https://api.themoviedb.org/3/discover/movie/?callback=?"
@@ -91,4 +91,25 @@ function search(searchTerm){
         cardContainer.appendChild(divFail);
       });
     };
+  function dropDownLinks(){
+    $('#login').show();
+    $('#search').hide();
+  }
+  $('#navbarSupportedContent').click(function(){
+    console.log('in dropdown event');
+    dropDownLinks();
+  })
+  $('#loginForm').submit(function(event){
+  var username1=$('#userinput').val();
+  console.log(username1);
+  storeName(username1);
+  event.preventDefault();
+})
+function storeName(name){
+
+    localStorage.setItem('usernamekey', name);
+    var tempName = localStorage.getItem('usernamekey');
+    updateName(tempName);
+    console.log('storage: ' + localStorage.getItem('usernamekey'));
+}
  })

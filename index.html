@@ -23,7 +23,8 @@
                      Dropdown
                    </a>
                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Login</a>
+                      <a id="login" class="dropdown-item" data-toggle="modal" data-target="#login-modal" href="#">Login</a>
+                      <a id="search" class="dropdown-item" href="#">Search</a>
                       <form class="Login" action="searchPage.html" method="post">
                       </form>
                       <a class="dropdown-item" href="#">Sign Up</a>
@@ -41,6 +42,18 @@
     <h1>Sci-Fi Movie Geeks</h1>
       <div id="cardContainer" class="container-fluid" >  <!-- added a container for the cards -->
       </div>
+      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form id="loginForm">
+					<input type="text" name="user" placeholder="Username">
+					<input type="password" name="pass" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+				</div>
+			</div>
+		  </div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
