@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-search("wonder woman");  //this calls the function after the DOM is loaded automtically
+search("x-men");  //this calls the function after the DOM is loaded automtically
 
 function search(searchTerm){
       console.log("in searchTerm");

@@ -99,17 +99,16 @@ function landingPage(){
     console.log('in dropdown event');
     dropDownLinks();
   })
-  $('#loginForm').submit(function(event){
-  var username1=$('#userinput').val();
-  console.log(username1);
-  storeName(username1);
+  $('#login').submit(function(event){
+  let username = $('#user').val();
+  console.log(user);
+  storeName(username);
   event.preventDefault();
 })
 function storeName(name){
-
     localStorage.setItem('usernamekey', name);
     var tempName = localStorage.getItem('usernamekey');
-    updateName(tempName);
-    console.log('storage: ' + localStorage.getItem('usernamekey'));
+    // updateName(tempName);
+    // console.log('storage: ' + localStorage.getItem('usernamekey'));
 }
  })
