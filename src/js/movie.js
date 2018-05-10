@@ -112,6 +112,7 @@ function landingPage(){
   console.log(username);
   storeName(username);
   event.preventDefault();
+  location.reload(true);
 })
 function storeName(name){
     localStorage.setItem('usernamekey', name);

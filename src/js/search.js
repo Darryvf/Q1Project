@@ -1,9 +1,10 @@
 $(document).ready(function() {
 
-search("avengers");  //this calls the function after the DOM is loaded automtically
+// search("avengers");  //this calls the function after the DOM is loaded automtically
 
 function search(searchTerm){
       console.log("in searchTerm");
+      console.log("searchTerm is " + searchTerm);
        //this was comicVineAPI used with cards. Changed to movie api_key
        //with the correct fields
       let movieAPI = "https://api.themoviedb.org/3/search/movie?callback=?"
@@ -28,6 +29,7 @@ function search(searchTerm){
            //the fields to use the movie API ones
            console.log(data);
 
+          $('#cardContainer').empty();
            //create the cardGroup at the top "data" level
            let divCardGroup = document.createElement('div');
             divCardGroup.className = "card-deck";
@@ -90,4 +92,14 @@ function search(searchTerm){
         cardContainer.appendChild(divFail);
       });
     };
+    $('#searchForm').submit(function(event){
+      console.log('in submit');
+      let searchPhrase = $('#searchTerm').val();
+      console.log("searchPhrase is " + searchPhrase);
+      if (searchPhrase === ""){
+        alert("Please Enter a Search Phrase");
+      }
+      search(searchPhrase);
+      event.preventDefault();
+    });
  })
