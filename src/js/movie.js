@@ -96,9 +96,11 @@ function landingPage(){
     if (localStorage.getItem('usernamekey') === null){
       $('#login').show();
       $('#search').hide();
+      $('#logout').hide();
     } else {
       $('#login').hide();
       $('#search').show();
+      $('#logout').show();
     }
     console.log(localStorage.getItem('usernamekey'));
   }
@@ -112,6 +114,11 @@ function landingPage(){
   console.log(username);
   storeName(username);
   event.preventDefault();
+  location.reload(true);
+})
+
+$("#logout").click(function(){
+  localStorage.removeItem("usernamekey");
   location.reload(true);
 })
 function storeName(name){
