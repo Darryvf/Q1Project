@@ -76,7 +76,7 @@ h1 {
   color: white;
 }
 
-/* @import url(http://fonts.googleapis.com/css?family=Roboto); */
+@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
@@ -97,11 +97,16 @@ h1 {
   font-family: roboto;
 }
 
-.loginmodal-container input[type=submit] {
-  width: 100%;
+.loginmodal-container input[type=submit], button {
+
   display: block;
+  width: 100%;
   margin-bottom: 10px;
   position: relative;
+}
+
+.loginmodal-container button{
+  margin-right: 5px;
 }
 
 .loginmodal-container input[type=text], input[type=password] {

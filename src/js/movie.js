@@ -92,16 +92,24 @@ function landingPage(){
       });
     };
   function dropDownLinks(){
-    $('#login').show();
-    $('#search').hide();
+    console.log('in dropDownLinks');
+    if (localStorage.getItem('usernamekey') === null){
+      $('#login').show();
+      $('#search').hide();
+    } else {
+      $('#login').hide();
+      $('#search').show();
+    }
+    console.log(localStorage.getItem('usernamekey'));
   }
   $('#navbarSupportedContent').click(function(){
     console.log('in dropdown event');
     dropDownLinks();
   })
-  $('#login').submit(function(event){
+  $('#loginForm').submit(function(event){
+    console.log('in login submit');
   let username = $('#user').val();
-  console.log(user);
+  console.log(username);
   storeName(username);
   event.preventDefault();
 })
