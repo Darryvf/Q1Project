@@ -112,8 +112,8 @@ function landingPage(){
     console.log('in login submit');
     bootstrapValidate(
    '#user',
-   'email:Enter a valid E-Mail Address!'
-);
+   'required: Please input username!'
+    );
   let username = $('#user').val();
   console.log(username);
   storeName(username);
