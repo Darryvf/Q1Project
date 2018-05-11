@@ -110,12 +110,17 @@ function landingPage(){
   })
   $('#loginForm').submit(function(event){
     console.log('in login submit');
+    bootstrapValidate(
+   '#user',
+   'email:Enter a valid E-Mail Address!'
+);
   let username = $('#user').val();
   console.log(username);
   storeName(username);
   event.preventDefault();
   location.reload(true);
 })
+
 
 $("#logout").click(function(){
   localStorage.removeItem("usernamekey");

@@ -96,9 +96,10 @@ function search(searchTerm){
       console.log('in submit');
       let searchPhrase = $('#searchTerm').val();
       console.log("searchPhrase is " + searchPhrase);
-      if (searchPhrase === ""){
-        alert("Please Enter a Search Phrase");
-      }
+      bootstrapValidate(
+     '#searchTerm',
+     'notEmpty: Please enter a search term!'
+   );
       search(searchPhrase);
       event.preventDefault();
     });
