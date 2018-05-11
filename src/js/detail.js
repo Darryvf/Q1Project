@@ -82,6 +82,12 @@ function search(searchTerm){
             divR.appendChild(divRText);
             divCardBody.appendChild(divR);
 
+            let divH = document.createElement('a');
+            divH.setAttribute('href',data.homepage);
+            divH.innerHTML = data.homepage;
+            divH.className="card-text2";
+            divCardBody.appendChild(divH);
+
             divCard.appendChild(divCardBody);
 
             let cardContainer = document.getElementById("cardContainer");
